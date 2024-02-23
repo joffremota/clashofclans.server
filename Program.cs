@@ -1,4 +1,3 @@
-
 namespace clashofclans.server
 {
     public class Program
@@ -14,6 +13,7 @@ namespace clashofclans.server
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
             builder.Services.AddHttpClient();
+            builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblies(AppDomain.CurrentDomain.GetAssemblies()));
 
             var app = builder.Build();
 
@@ -25,7 +25,6 @@ namespace clashofclans.server
             }
 
             app.UseAuthorization();
-
 
             app.MapControllers();
 
